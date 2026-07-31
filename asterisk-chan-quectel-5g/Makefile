@@ -9,11 +9,12 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=asterisk-chan-quectel-5g
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/huanghitoy/asterisk-chan-quectel-5g.git
-PKG_SOURCE_VERSION:=8128e688b5a0a5039f25a4949053271a6b6f57e4
-PKG_SOURCE_DATE= 2022-10-17
+# PKG_SOURCE_PROTO:=git
+# PKG_SOURCE_URL:=https://github.com/koreapyj/asterisk-chan-quectel-5g.git
+# PKG_SOURCE_VERSION:=e18317de8769300f83a9c0a8663c5a9d99c60936
+# PKG_SOURCE_DATE=2022-09-16
 PKG_RELEASE:=0.1
+PKG_VERSION:=deadbeef
 
 PKG_FIXUP:=autoreconf
 
@@ -70,7 +71,7 @@ endef
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/etc/asterisk
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/etc/quectel5g.conf $(1)/etc/asterisk
+	$(INSTALL_CONF) $(PKG_BUILD_DIR)/etc/quectel5g.conf $(1)/etc/asterisk
 	$(INSTALL_DIR) $(1)$(MODULES_DIR)
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/chan_quectel.so $(1)$(MODULES_DIR)
 endef
